@@ -1,0 +1,643 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2429269C79475B278DE0ADCF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F56D56D46D9226004B1CBA01 /* libPods.a */; };
+		DE1FCF0F1C8FED6100E9632C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1FCF0E1C8FED6100E9632C /* main.m */; };
+		DE1FCF121C8FED6100E9632C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1FCF111C8FED6100E9632C /* AppDelegate.m */; };
+		DE1FCF181C8FED6100E9632C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE1FCF161C8FED6100E9632C /* Main.storyboard */; };
+		DE1FCF1A1C8FED6100E9632C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1FCF191C8FED6100E9632C /* Assets.xcassets */; };
+		DE1FCF1D1C8FED6100E9632C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE1FCF1B1C8FED6100E9632C /* LaunchScreen.storyboard */; };
+		DE1FCF281C8FED6100E9632C /* Peek_iOS_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1FCF271C8FED6100E9632C /* Peek_iOS_AppTests.m */; };
+		DE1FCF331C8FED6100E9632C /* Peek_iOS_AppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1FCF321C8FED6100E9632C /* Peek_iOS_AppUITests.m */; };
+		DE1FCF421C8FFE9F00E9632C /* TweetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1FCF411C8FFE9F00E9632C /* TweetsTableViewController.m */; };
+		DE1FCF551C90FCD400E9632C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE1FCF541C90FCD400E9632C /* Accounts.framework */; };
+		DE1FCF571C90FCDA00E9632C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE1FCF561C90FCDA00E9632C /* Social.framework */; };
+		DE1FCF591C90FCE200E9632C /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE1FCF581C90FCE200E9632C /* Twitter.framework */; };
+		DE1FCF601C92772C00E9632C /* TwitterNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1FCF5F1C92772C00E9632C /* TwitterNetworkController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE1FCF241C8FED6100E9632C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE1FCF021C8FED6100E9632C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE1FCF091C8FED6100E9632C;
+			remoteInfo = "Peek iOS App";
+		};
+		DE1FCF2F1C8FED6100E9632C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE1FCF021C8FED6100E9632C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE1FCF091C8FED6100E9632C;
+			remoteInfo = "Peek iOS App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C0C615E942882090DF66D63 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		76253AD2A6E11CBF5FE5F382 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DE1FCF0A1C8FED6100E9632C /* Peek iOS App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peek iOS App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE1FCF0E1C8FED6100E9632C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DE1FCF101C8FED6100E9632C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DE1FCF111C8FED6100E9632C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DE1FCF171C8FED6100E9632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE1FCF191C8FED6100E9632C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE1FCF1C1C8FED6100E9632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE1FCF1E1C8FED6100E9632C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE1FCF231C8FED6100E9632C /* Peek iOS AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Peek iOS AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE1FCF271C8FED6100E9632C /* Peek_iOS_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Peek_iOS_AppTests.m; sourceTree = "<group>"; };
+		DE1FCF291C8FED6100E9632C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE1FCF2E1C8FED6100E9632C /* Peek iOS AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Peek iOS AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE1FCF321C8FED6100E9632C /* Peek_iOS_AppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Peek_iOS_AppUITests.m; sourceTree = "<group>"; };
+		DE1FCF341C8FED6100E9632C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE1FCF401C8FFE9F00E9632C /* TweetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsTableViewController.h; sourceTree = "<group>"; };
+		DE1FCF411C8FFE9F00E9632C /* TweetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsTableViewController.m; sourceTree = "<group>"; };
+		DE1FCF541C90FCD400E9632C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		DE1FCF561C90FCDA00E9632C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		DE1FCF581C90FCE200E9632C /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		DE1FCF5E1C92772C00E9632C /* TwitterNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterNetworkController.h; sourceTree = "<group>"; };
+		DE1FCF5F1C92772C00E9632C /* TwitterNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterNetworkController.m; sourceTree = "<group>"; };
+		F56D56D46D9226004B1CBA01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE1FCF071C8FED6100E9632C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE1FCF591C90FCE200E9632C /* Twitter.framework in Frameworks */,
+				DE1FCF571C90FCDA00E9632C /* Social.framework in Frameworks */,
+				DE1FCF551C90FCD400E9632C /* Accounts.framework in Frameworks */,
+				2429269C79475B278DE0ADCF /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE1FCF201C8FED6100E9632C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE1FCF2B1C8FED6100E9632C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A2922C692EEB6C3B41F3503 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F56D56D46D9226004B1CBA01 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		471F113ED77A73DA6F20AF54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0C0C615E942882090DF66D63 /* Pods.debug.xcconfig */,
+				76253AD2A6E11CBF5FE5F382 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE1FCF011C8FED6100E9632C = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF0C1C8FED6100E9632C /* Peek iOS App */,
+				DE1FCF261C8FED6100E9632C /* Peek iOS AppTests */,
+				DE1FCF311C8FED6100E9632C /* Peek iOS AppUITests */,
+				DE1FCF0B1C8FED6100E9632C /* Products */,
+				471F113ED77A73DA6F20AF54 /* Pods */,
+				3A2922C692EEB6C3B41F3503 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DE1FCF0B1C8FED6100E9632C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF0A1C8FED6100E9632C /* Peek iOS App.app */,
+				DE1FCF231C8FED6100E9632C /* Peek iOS AppTests.xctest */,
+				DE1FCF2E1C8FED6100E9632C /* Peek iOS AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE1FCF0C1C8FED6100E9632C /* Peek iOS App */ = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF481C8FFFC400E9632C /* Controllers */,
+				DE1FCF471C8FFFBE00E9632C /* Views */,
+				DE1FCF1E1C8FED6100E9632C /* Info.plist */,
+				DE1FCF5A1C90FCEC00E9632C /* Framework */,
+				DE1FCF0D1C8FED6100E9632C /* Supporting Files */,
+			);
+			path = "Peek iOS App";
+			sourceTree = "<group>";
+		};
+		DE1FCF0D1C8FED6100E9632C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF101C8FED6100E9632C /* AppDelegate.h */,
+				DE1FCF111C8FED6100E9632C /* AppDelegate.m */,
+				DE1FCF0E1C8FED6100E9632C /* main.m */,
+				DE1FCF191C8FED6100E9632C /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE1FCF261C8FED6100E9632C /* Peek iOS AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF271C8FED6100E9632C /* Peek_iOS_AppTests.m */,
+				DE1FCF291C8FED6100E9632C /* Info.plist */,
+			);
+			path = "Peek iOS AppTests";
+			sourceTree = "<group>";
+		};
+		DE1FCF311C8FED6100E9632C /* Peek iOS AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF321C8FED6100E9632C /* Peek_iOS_AppUITests.m */,
+				DE1FCF341C8FED6100E9632C /* Info.plist */,
+			);
+			path = "Peek iOS AppUITests";
+			sourceTree = "<group>";
+		};
+		DE1FCF471C8FFFBE00E9632C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF401C8FFE9F00E9632C /* TweetsTableViewController.h */,
+				DE1FCF411C8FFE9F00E9632C /* TweetsTableViewController.m */,
+				DE1FCF161C8FED6100E9632C /* Main.storyboard */,
+				DE1FCF1B1C8FED6100E9632C /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DE1FCF481C8FFFC400E9632C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF5E1C92772C00E9632C /* TwitterNetworkController.h */,
+				DE1FCF5F1C92772C00E9632C /* TwitterNetworkController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DE1FCF5A1C90FCEC00E9632C /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				DE1FCF581C90FCE200E9632C /* Twitter.framework */,
+				DE1FCF561C90FCDA00E9632C /* Social.framework */,
+				DE1FCF541C90FCD400E9632C /* Accounts.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE1FCF091C8FED6100E9632C /* Peek iOS App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE1FCF371C8FED6100E9632C /* Build configuration list for PBXNativeTarget "Peek iOS App" */;
+			buildPhases = (
+				FF6D9D646C05ED29625BF560 /* Check Pods Manifest.lock */,
+				DE1FCF061C8FED6100E9632C /* Sources */,
+				DE1FCF071C8FED6100E9632C /* Frameworks */,
+				DE1FCF081C8FED6100E9632C /* Resources */,
+				26855D065ED232B2859BFA43 /* Embed Pods Frameworks */,
+				7BD44BEE58C103848D2EF7F1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Peek iOS App";
+			productName = "Peek iOS App";
+			productReference = DE1FCF0A1C8FED6100E9632C /* Peek iOS App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DE1FCF221C8FED6100E9632C /* Peek iOS AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE1FCF3A1C8FED6100E9632C /* Build configuration list for PBXNativeTarget "Peek iOS AppTests" */;
+			buildPhases = (
+				DE1FCF1F1C8FED6100E9632C /* Sources */,
+				DE1FCF201C8FED6100E9632C /* Frameworks */,
+				DE1FCF211C8FED6100E9632C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE1FCF251C8FED6100E9632C /* PBXTargetDependency */,
+			);
+			name = "Peek iOS AppTests";
+			productName = "Peek iOS AppTests";
+			productReference = DE1FCF231C8FED6100E9632C /* Peek iOS AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DE1FCF2D1C8FED6100E9632C /* Peek iOS AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE1FCF3D1C8FED6100E9632C /* Build configuration list for PBXNativeTarget "Peek iOS AppUITests" */;
+			buildPhases = (
+				DE1FCF2A1C8FED6100E9632C /* Sources */,
+				DE1FCF2B1C8FED6100E9632C /* Frameworks */,
+				DE1FCF2C1C8FED6100E9632C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE1FCF301C8FED6100E9632C /* PBXTargetDependency */,
+			);
+			name = "Peek iOS AppUITests";
+			productName = "Peek iOS AppUITests";
+			productReference = DE1FCF2E1C8FED6100E9632C /* Peek iOS AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE1FCF021C8FED6100E9632C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = ThangTong;
+				TargetAttributes = {
+					DE1FCF091C8FED6100E9632C = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					DE1FCF221C8FED6100E9632C = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = DE1FCF091C8FED6100E9632C;
+					};
+					DE1FCF2D1C8FED6100E9632C = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = DE1FCF091C8FED6100E9632C;
+					};
+				};
+			};
+			buildConfigurationList = DE1FCF051C8FED6100E9632C /* Build configuration list for PBXProject "Peek iOS App" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE1FCF011C8FED6100E9632C;
+			productRefGroup = DE1FCF0B1C8FED6100E9632C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE1FCF091C8FED6100E9632C /* Peek iOS App */,
+				DE1FCF221C8FED6100E9632C /* Peek iOS AppTests */,
+				DE1FCF2D1C8FED6100E9632C /* Peek iOS AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE1FCF081C8FED6100E9632C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE1FCF1D1C8FED6100E9632C /* LaunchScreen.storyboard in Resources */,
+				DE1FCF1A1C8FED6100E9632C /* Assets.xcassets in Resources */,
+				DE1FCF181C8FED6100E9632C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE1FCF211C8FED6100E9632C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE1FCF2C1C8FED6100E9632C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26855D065ED232B2859BFA43 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BD44BEE58C103848D2EF7F1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF6D9D646C05ED29625BF560 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE1FCF061C8FED6100E9632C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE1FCF421C8FFE9F00E9632C /* TweetsTableViewController.m in Sources */,
+				DE1FCF121C8FED6100E9632C /* AppDelegate.m in Sources */,
+				DE1FCF601C92772C00E9632C /* TwitterNetworkController.m in Sources */,
+				DE1FCF0F1C8FED6100E9632C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE1FCF1F1C8FED6100E9632C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE1FCF281C8FED6100E9632C /* Peek_iOS_AppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE1FCF2A1C8FED6100E9632C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE1FCF331C8FED6100E9632C /* Peek_iOS_AppUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE1FCF251C8FED6100E9632C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE1FCF091C8FED6100E9632C /* Peek iOS App */;
+			targetProxy = DE1FCF241C8FED6100E9632C /* PBXContainerItemProxy */;
+		};
+		DE1FCF301C8FED6100E9632C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE1FCF091C8FED6100E9632C /* Peek iOS App */;
+			targetProxy = DE1FCF2F1C8FED6100E9632C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DE1FCF161C8FED6100E9632C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE1FCF171C8FED6100E9632C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DE1FCF1B1C8FED6100E9632C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE1FCF1C1C8FED6100E9632C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE1FCF351C8FED6100E9632C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DE1FCF361C8FED6100E9632C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE1FCF381C8FED6100E9632C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C0C615E942882090DF66D63 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Peek iOS App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ThangTong.Peek-iOS-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DE1FCF391C8FED6100E9632C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76253AD2A6E11CBF5FE5F382 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Peek iOS App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ThangTong.Peek-iOS-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DE1FCF3B1C8FED6100E9632C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Peek iOS AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ThangTong.Peek-iOS-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peek iOS App.app/Peek iOS App";
+			};
+			name = Debug;
+		};
+		DE1FCF3C1C8FED6100E9632C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Peek iOS AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ThangTong.Peek-iOS-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peek iOS App.app/Peek iOS App";
+			};
+			name = Release;
+		};
+		DE1FCF3E1C8FED6100E9632C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Peek iOS AppUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ThangTong.Peek-iOS-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Peek iOS App";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		DE1FCF3F1C8FED6100E9632C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Peek iOS AppUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ThangTong.Peek-iOS-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Peek iOS App";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE1FCF051C8FED6100E9632C /* Build configuration list for PBXProject "Peek iOS App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE1FCF351C8FED6100E9632C /* Debug */,
+				DE1FCF361C8FED6100E9632C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE1FCF371C8FED6100E9632C /* Build configuration list for PBXNativeTarget "Peek iOS App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE1FCF381C8FED6100E9632C /* Debug */,
+				DE1FCF391C8FED6100E9632C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE1FCF3A1C8FED6100E9632C /* Build configuration list for PBXNativeTarget "Peek iOS AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE1FCF3B1C8FED6100E9632C /* Debug */,
+				DE1FCF3C1C8FED6100E9632C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE1FCF3D1C8FED6100E9632C /* Build configuration list for PBXNativeTarget "Peek iOS AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE1FCF3E1C8FED6100E9632C /* Debug */,
+				DE1FCF3F1C8FED6100E9632C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE1FCF021C8FED6100E9632C /* Project object */;
+}

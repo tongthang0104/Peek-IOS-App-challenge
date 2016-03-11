@@ -128,6 +128,11 @@
     separatorLineView.backgroundColor = [UIColor grayColor];
     [cell.contentView addSubview:separatorLineView];
     
+    //hightlight 
+    UIView *highlightColorView = [[UIView alloc] init];
+    highlightColorView.backgroundColor = [UIColor redColor];
+    cell.selectedBackgroundView = highlightColorView;
+    
     NSDictionary *tweetDictionary = self.tweetsArray[indexPath.row];
     NSString *tweetText = [tweetDictionary objectForKey:@"text"];
     NSDictionary *userDict = [tweetDictionary objectForKey:@"user"];
@@ -146,6 +151,10 @@
 }
 
 #pragma mark - Table view delegate
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     UIColor *secondColor;
     if (indexPath.row % 2 == 0) {

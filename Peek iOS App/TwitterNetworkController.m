@@ -27,6 +27,7 @@
                maxID:(NSString *)maxID
         successBlock:(void(^)(NSDictionary *searchMetadata, NSArray *statuses))successBlock
           errorBlock:(void(^)(NSError *error))errorBlock {
+    
     [self.twitterAPI getSearchTweetsWithQuery:query
                                          geocode:nil
                                             lang:nil

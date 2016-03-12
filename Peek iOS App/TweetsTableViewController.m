@@ -32,7 +32,7 @@
     self.twitterAPI = [TwitterNetworkController callTwitterWithConsumerKey:@"8kevXkS506035LW7HthIUn4ms" consumerSecret:@"IPLudUKghCkYgvkcFQS1xPrfYgTLGn66R60sAn0Fu85gpkBBSF" completion:^(NSString *username, NSString *userID) {
         
         NSLog(@"succeed login to Twitter");
-        [self searchTwitterWithQuery:nil];
+        [self searchTwitterWithQuery:YES completion:nil];
         [self.tableView reloadData];
         
     } error:^(NSError *error) {
@@ -53,12 +53,11 @@
     
     [self.tableView addInfiniteScrollWithHandler:^(UITableView *tableView) {
         
-        [self searchTwitterWithQuery:^{
+        [self searchTwitterWithQuery: NO completion:^{
             [tableView finishInfiniteScroll];
         }];
-    }];
+     }];
 
-    [self searchTwitterWithQuery:nil];
 }
 -(void)reloadData {
     [self.tableView reloadData];
@@ -74,7 +73,7 @@
         
         [self.tweetsArray removeAllObjects];
         [self.tableView reloadData];
-        [self searchTwitterWithQuery:nil];
+        [self searchTwitterWithQuery:YES completion:nil];
         [self.refreshControl endRefreshing];
     }
 }
@@ -94,7 +93,7 @@
     }];
 }
 
--(void)searchTwitterWithQuery:(void(^)(void))completion {
+-(void)searchTwitterWithQuery:(BOOL)firstQuery completion: (void(^)(void))completion {
     [self.twitterAPI searchTweets:@"@Peek" maxID:self.maxID successBlock:^(NSDictionary *searchMetadata, NSArray *data) {
         NSString *nextResult = searchMetadata[@"next_results"];
         NSDictionary *nextResultDict = [self queryDictionary:nextResult];
@@ -102,8 +101,12 @@
         NSLog(@"%@", searchMetadata);
         self.maxID = nextResultDict[@"max_id"];
         
-        self.tweetsArray = [NSMutableArray new];
-        [self.tweetsArray addObjectsFromArray:data];
+        if (firstQuery == YES) {
+            self.tweetsArray = [NSMutableArray new];
+            [self.tweetsArray addObjectsFromArray:data];
+        } else {
+            [self.tweetsArray addObjectsFromArray:data];
+        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];

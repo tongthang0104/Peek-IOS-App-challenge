@@ -8,12 +8,6 @@
 
 #import "TwitterNetworkController.h"
 
-
-@interface TwitterNetworkController ()
-@property (strong, nonatomic) STTwitterAPI *twitterAPI;
-
-
-@end
 @implementation TwitterNetworkController
 
 +(instancetype)callTwitterWithConsumerKey:(NSString *)consumerKey
@@ -46,5 +40,42 @@
                                         callback:nil
                                     successBlock:successBlock
                                       errorBlock:errorBlock];
+}
+
+-(void)retweet:(NSDictionary *)tweetDict successBlock:(void (^)(NSDictionary *))successBlock errorBlock:(void (^)(NSError *))errorBlock {
+    
+    if (!self.account) {
+        
+        ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+        ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        
+        [accountStore requestAccessToAccountsWithType:accountType options:NULL completion:^(BOOL granted, NSError *error) {
+            if (granted) {
+                if(!self.account && !self.userAPI) {
+                    NSArray *multipleAccounts = [accountStore accountsWithAccountType:accountType];
+                    if (multipleAccounts.count > 0) {
+                        self.account = [multipleAccounts objectAtIndex:0];
+                        self.userAPI = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:nil];
+                    } else {
+                        NSDictionary *userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Retweet was unsuccessful.", nil)};
+                        NSError *error = [NSError errorWithDomain:ACErrorDomain
+                                                             code:99
+                                                         userInfo:userInfo];
+                        errorBlock(error);
+                    }
+                }
+
+                [self.userAPI postStatusRetweetWithID:tweetDict[@"id_str"] trimUser:[NSNumber numberWithBool:YES] successBlock:successBlock errorBlock:errorBlock];
+            } else {
+                NSDictionary *userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Twitter access not granted.", nil)};
+                NSError *error = [NSError errorWithDomain:ACErrorDomain
+                                                     code:98
+                                                 userInfo:userInfo];
+                errorBlock(error);
+            }
+        }];
+    } else {
+        [self retweet:tweetDict successBlock:successBlock errorBlock:errorBlock];
+    }
 }
 @end

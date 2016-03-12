@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F90E0C156861410993637CF6'
-               BlueprintName = 'STTwitter'
+               BlueprintIdentifier = 'F8F1A5744A36C57F3FF108C9'
+               BlueprintName = 'UIScrollView-InfiniteScroll'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSTTwitter.a'>
+               BuildableName = 'libUIScrollView-InfiniteScroll.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

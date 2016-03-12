@@ -137,8 +137,11 @@
 		DE1FCF0C1C8FED6100E9632C /* Peek iOS App */ = {
 			isa = PBXGroup;
 			children = (
-				DE1FCF481C8FFFC400E9632C /* Controllers */,
-				DE1FCF471C8FFFBE00E9632C /* Views */,
+				DE1FCF161C8FED6100E9632C /* Main.storyboard */,
+				DE1FCF5E1C92772C00E9632C /* TwitterNetworkController.h */,
+				DE1FCF5F1C92772C00E9632C /* TwitterNetworkController.m */,
+				DE1FCF401C8FFE9F00E9632C /* TweetsTableViewController.h */,
+				DE1FCF411C8FFE9F00E9632C /* TweetsTableViewController.m */,
 				DE1FCF1E1C8FED6100E9632C /* Info.plist */,
 				DE1FCF5A1C90FCEC00E9632C /* Framework */,
 				DE1FCF0D1C8FED6100E9632C /* Supporting Files */,
@@ -149,6 +152,7 @@
 		DE1FCF0D1C8FED6100E9632C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DE1FCF1B1C8FED6100E9632C /* LaunchScreen.storyboard */,
 				DE1FCF101C8FED6100E9632C /* AppDelegate.h */,
 				DE1FCF111C8FED6100E9632C /* AppDelegate.m */,
 				DE1FCF0E1C8FED6100E9632C /* main.m */,
@@ -173,26 +177,6 @@
 				DE1FCF341C8FED6100E9632C /* Info.plist */,
 			);
 			path = "Peek iOS AppUITests";
-			sourceTree = "<group>";
-		};
-		DE1FCF471C8FFFBE00E9632C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				DE1FCF401C8FFE9F00E9632C /* TweetsTableViewController.h */,
-				DE1FCF411C8FFE9F00E9632C /* TweetsTableViewController.m */,
-				DE1FCF161C8FED6100E9632C /* Main.storyboard */,
-				DE1FCF1B1C8FED6100E9632C /* LaunchScreen.storyboard */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		DE1FCF481C8FFFC400E9632C /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				DE1FCF5E1C92772C00E9632C /* TwitterNetworkController.h */,
-				DE1FCF5F1C92772C00E9632C /* TwitterNetworkController.m */,
-			);
-			name = Controllers;
 			sourceTree = "<group>";
 		};
 		DE1FCF5A1C90FCEC00E9632C /* Framework */ = {

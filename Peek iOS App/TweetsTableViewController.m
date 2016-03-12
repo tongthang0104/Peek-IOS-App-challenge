@@ -9,26 +9,17 @@
 
 
 #import "TweetsTableViewController.h"
-#import "TwitterNetworkController.h"
+#import <UIScrollView+InfiniteScroll.h>
 #import <STTwitter/STTwitter.h>
-
-
-@interface TweetsTableViewController ()
-
-@property (strong, nonatomic) TwitterNetworkController *twitterAPI;
-@property (strong, nonatomic) NSMutableArray *tweetsArray;
-@property (strong, nonatomic) NSString *maxID;
-@property (strong, nonatomic) STTwitterAPI *twitter;
-
-@end
 
 @implementation TweetsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self infiniteScrolling];
     self.navigationItem.title = @"Peek Querry";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Retweet" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Retweet" style:UIBarButtonItemStylePlain target:self action: @selector(retweet:)];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor brownColor];
@@ -41,7 +32,7 @@
     self.twitterAPI = [TwitterNetworkController callTwitterWithConsumerKey:@"8kevXkS506035LW7HthIUn4ms" consumerSecret:@"IPLudUKghCkYgvkcFQS1xPrfYgTLGn66R60sAn0Fu85gpkBBSF" completion:^(NSString *username, NSString *userID) {
         
         NSLog(@"succeed login to Twitter");
-        [self searchTwitterWithQuery];
+        [self searchTwitterWithQuery:nil];
         [self.tableView reloadData];
         
     } error:^(NSError *error) {
@@ -54,37 +45,64 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark Support Functions
 
+-(void) infiniteScrolling {
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleGray;
+    
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView *tableView) {
+        
+        [self searchTwitterWithQuery:^{
+            [tableView finishInfiniteScroll];
+        }];
+    }];
+
+    [self searchTwitterWithQuery:nil];
+}
 -(void)reloadData {
     [self.tableView reloadData];
     if (self.refreshControl) {
         
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MMM d, h:mm a"];
-        NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
-        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *title = [NSString stringWithFormat:@"Last update: %@", [dateFormatter stringFromDate:[NSDate date]]];
+        NSDictionary *colorDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
                                                                     forKey:NSForegroundColorAttributeName];
-        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:colorDictionary];
         self.refreshControl.attributedTitle = attributedTitle;
         
         [self.tweetsArray removeAllObjects];
         [self.tableView reloadData];
-        [self searchTwitterWithQuery];
+        [self searchTwitterWithQuery:nil];
         [self.refreshControl endRefreshing];
     }
 }
 
--(void)searchTwitterWithQuery {
+-(void)retweet:(id)sender {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    NSDictionary *selectedTweet = [self.tweetsArray objectAtIndex:selectedIndexPath.row];
+    [self.twitterAPI retweet:selectedTweet successBlock:^(NSDictionary *status) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+             [self alertControllerWithTitle:@"Successfully retweeted" message:@"OK"];
+        });
+    } errorBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self alertControllerWithTitle:(error.localizedDescription) message:@"Try again"];
+        });
+        NSLog(@"%@", error.localizedDescription);
+    }];
+}
+
+-(void)searchTwitterWithQuery:(void(^)(void))completion {
     [self.twitterAPI searchTweets:@"@Peek" maxID:self.maxID successBlock:^(NSDictionary *searchMetadata, NSArray *data) {
-        NSString *nextResultsParamsStr = searchMetadata[@"next_results"];
-        NSDictionary *nextResultsParams = [self queryDictionary:nextResultsParamsStr];
+        NSString *nextResult = searchMetadata[@"next_results"];
+        NSDictionary *nextResultDict = [self queryDictionary:nextResult];
         
         NSLog(@"%@", searchMetadata);
-        self.maxID = nextResultsParams[@"max_id"];
+        self.maxID = nextResultDict[@"max_id"];
         
         self.tweetsArray = [NSMutableArray new];
-        
         [self.tweetsArray addObjectsFromArray:data];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -92,20 +110,23 @@
         });
         
     } errorBlock:^(NSError *error) {
+        [self alertControllerWithTitle:(error.localizedDescription) message:@"Try again"];
         NSLog(@"%@", error.localizedDescription);
     }];
 }
 
-- (NSDictionary *)queryDictionary:(NSString *)paramStr {
+// Thanks to https://www.codementor.io/tips/3847022513/creating-url-query-parameters-from-nsdictionary-objects-in-objectivec
+
+- (NSDictionary *)queryDictionary:(NSString *)parameter {
     //remove leading param separator, if it exists
-    paramStr = [paramStr stringByReplacingOccurrencesOfString:@"?" withString:@""];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    for (NSString *param in [paramStr componentsSeparatedByString:@"&"]) {
-        NSArray *parts = [param componentsSeparatedByString:@"="];
+    parameter = [parameter stringByReplacingOccurrencesOfString:@"?" withString:@""];
+    NSMutableDictionary *paraDictionary = [[NSMutableDictionary alloc] init];
+    for (NSString *parameterString in [parameter componentsSeparatedByString:@"&"]) {
+        NSArray *parts = [parameterString componentsSeparatedByString:@"="];
         if([parts count] < 2) continue;
-        [params setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
+        [paraDictionary setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
     }
-    return params;
+    return paraDictionary;
 }
 
 -(void)alertControllerWithTitle: (NSString *)title message: (NSString *)message {
@@ -140,9 +161,9 @@
     NSString *profileImage = [userDict objectForKey:@"profile_image_url"];
     
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    
     cell.textLabel.text = tweetText;
     cell.detailTextLabel.text = [NSString stringWithFormat:@" by %@", username];
+    
     NSURL *url = [NSURL URLWithString: profileImage];
     NSData *data = [NSData dataWithContentsOfURL:url];
     cell.imageView.image = [[UIImage alloc] initWithData:data];
@@ -152,13 +173,10 @@
 
 #pragma mark - Table view delegate
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     UIColor *secondColor;
     if (indexPath.row % 2 == 0) {
-        secondColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
+        secondColor = [UIColor lightGrayColor];
     } else {
         secondColor = [UIColor whiteColor];
     }
@@ -167,6 +185,7 @@
         cell.backgroundColor = secondColor;
     }
 }
+
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.estimatedRowHeight = 80;
     return tableView.rowHeight = UITableViewAutomaticDimension;

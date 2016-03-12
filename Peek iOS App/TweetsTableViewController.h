@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TwitterNetworkController.h"
 
 @interface TweetsTableViewController : UITableViewController
+
+@property (strong, nonatomic) TwitterNetworkController *twitterAPI;
+@property (strong, nonatomic) NSMutableArray *tweetsArray;
+@property (strong, nonatomic) NSString *maxID;
+@property (strong, nonatomic) STTwitterAPI *twitter;
 
 @end

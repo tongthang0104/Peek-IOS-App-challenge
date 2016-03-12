@@ -4,7 +4,6 @@
 //
 //  Created by Thang H Tong on 3/10/16.
 //  Copyright © 2016 ThangTong. All rights reserved.
-//
 
 #import "TwitterNetworkController.h"
 
@@ -21,7 +20,6 @@
     [twitterAPI.twitterAPI verifyCredentialsWithUserSuccessBlock:completion errorBlock:error];
     return twitterAPI;
 }
-
 
 - (void)searchTweets:(NSString *)query
                maxID:(NSString *)maxID

@@ -14,13 +14,19 @@
 
 @implementation TweetsTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     [self infiniteScrolling];
+    
+    self.tweetsArray = [[NSMutableArray alloc] init];
+    
     self.navigationItem.title = @"Peek Querry";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Retweet" style:UIBarButtonItemStylePlain target:self action: @selector(retweet:)];
     
+    // Refresh
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor brownColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
@@ -49,15 +55,18 @@
 #pragma mark Support Functions
 
 -(void) infiniteScrolling {
+    __weak typeof(self) weakSelf = self;
+    
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleGray;
     
     [self.tableView addInfiniteScrollWithHandler:^(UITableView *tableView) {
-        
-        [self searchTwitterWithQuery: NO completion:^{
-            [tableView finishInfiniteScroll];
+        [weakSelf searchTwitterWithQuery:NO completion:^{
+            [tableView finishInfiniteScrollWithCompletion:^(id scrollView) {
+                [scrollView stopAnimating];
+            }];
+            
         }];
-     }];
-
+    }];
 }
 -(void)reloadData {
     [self.tableView reloadData];
@@ -78,12 +87,14 @@
     }
 }
 
+//Retweet
+
 -(void)retweet:(id)sender {
     NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
     NSDictionary *selectedTweet = [self.tweetsArray objectAtIndex:selectedIndexPath.row];
     [self.twitterAPI retweet:selectedTweet successBlock:^(NSDictionary *status) {
         dispatch_async(dispatch_get_main_queue(), ^{
-             [self alertControllerWithTitle:@"Successfully retweeted" message:@"OK"];
+            [self alertControllerWithTitle:@"Successfully retweeted" message:@"OK"];
         });
     } errorBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -93,25 +104,23 @@
     }];
 }
 
--(void)searchTwitterWithQuery:(BOOL)firstQuery completion: (void(^)(void))completion {
+//Query @Peek
+-(void)searchTwitterWithQuery: (BOOL)firstQuery completion: (void(^)(void))completion {
     [self.twitterAPI searchTweets:@"@Peek" maxID:self.maxID successBlock:^(NSDictionary *searchMetadata, NSArray *data) {
-        NSString *nextResult = searchMetadata[@"next_results"];
-        NSDictionary *nextResultDict = [self queryDictionary:nextResult];
-        
-        NSLog(@"%@", searchMetadata);
-        self.maxID = nextResultDict[@"max_id"];
         
         if (firstQuery == YES) {
-            self.tweetsArray = [NSMutableArray new];
+            NSString *nextResult = searchMetadata[@"next_results"];
+            NSDictionary *nextResultDict = [self queryDictionary:nextResult];
+            self.tweetsArray = [[NSMutableArray alloc] init];
             [self.tweetsArray addObjectsFromArray:data];
+            NSLog(@"%@", searchMetadata);
+            self.maxID = nextResultDict[@"max_id"];
         } else {
             [self.tweetsArray addObjectsFromArray:data];
         }
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
-        
     } errorBlock:^(NSError *error) {
         [self alertControllerWithTitle:(error.localizedDescription) message:@"Try again"];
         NSLog(@"%@", error.localizedDescription);
@@ -152,7 +161,7 @@
     separatorLineView.backgroundColor = [UIColor grayColor];
     [cell.contentView addSubview:separatorLineView];
     
-    //hightlight 
+    //hightlight
     UIView *highlightColorView = [[UIView alloc] init];
     highlightColorView.backgroundColor = [UIColor redColor];
     cell.selectedBackgroundView = highlightColorView;
